@@ -28,4 +28,12 @@ conda install -y pytorch==1.7.1 torchvision cudatoolkit=11.0 -c pytorch
 rm -rf fomm 2> /dev/null
 git clone https://github.com/alievk/first-order-model.git fomm
 
+# FOMM
+rm -rf fomm 2> /dev/null
+git clone https://github.com/alievk/first-order-model.git fomm
+
+# Nvidia - get the config and checkpoint from github's readme
+rm -rf One-Shot_Free-View_Neural_Talking_Head_Synthesis 2> /dev/null
+git clone https://github.com/zhanglonghao1992/One-Shot_Free-View_Neural_Talking_Head_Synthesis.git
+
 pip install -r requirements.txt

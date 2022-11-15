@@ -10,9 +10,18 @@ IS_WORKER=0
 IS_CLIENT=0
 DOCKER_IS_LOCAL_CLIENT=0
 DOCKER_NO_GPU=0
+USE_NVIDIA=1
 
-FOMM_CONFIG=fomm/config/vox-adv-256.yaml
-FOMM_CKPT=vox-adv-cpk.pth.tar
+FOMM_CONFIG=-1
+FOMM_CKPT=-1
+
+if [[ $USE_NVIDIA == 0 ]]; then
+    FOMM_CONFIG=fomm/config/vox-adv-256.yaml
+    FOMM_CKPT=vox-adv-cpk.pth.tar
+else
+    FOMM_CONFIG=One-Shot_Free-View_Neural_Talking_Head_Synthesis/config/vox-256-spade.yaml
+    FOMM_CKPT=00000189-checkpoint.pth.tar
+fi
 
 ARGS=""
 DOCKER_ARGS=""
@@ -85,15 +94,31 @@ if [[ $USE_DOCKER == 0 ]]; then
         conda activate $CONDA_ENV_NAME
     fi
     
-    export PYTHONPATH=$PYTHONPATH:$(pwd):$(pwd)/fomm
+    if [[ $USE_NVIDIA == 0 ]]; then
+        export PYTHONPATH=$PYTHONPATH:$(pwd):$(pwd)/fomm
+    else
+        export PYTHONPATH=$PYTHONPATH:$(pwd):$(pwd)/One-Shot_Free-View_Neural_Talking_Head_Synthesis
+    fi
+    # export PYTHONPATH=$PYTHONPATH:$(pwd):$(pwd)/fomm #$(pwd)/One-Shot_Free-View_Neural_Talking_Head_Synthesis
     
-    python afy/cam_fomm.py \
-        --config $FOMM_CONFIG \
-        --checkpoint $FOMM_CKPT \
-        --virt-cam $CAMID_VIRT \
-        --relative \
-        --adapt_scale \
-        $@
+    if [[ $USE_NVIDIA == 0 ]]; then
+        python afy/cam_fomm.py \
+            --config $FOMM_CONFIG \
+            --checkpoint $FOMM_CKPT \
+            --virt-cam $CAMID_VIRT \
+            --relative \
+            --adapt_scale \
+            $@
+    else
+        python afy/cam_fomm.py \
+            --config $FOMM_CONFIG \
+            --checkpoint $FOMM_CKPT \
+            --virt-cam $CAMID_VIRT \
+            --relative \
+            --adapt_scale \
+            --use_nvidia
+            $@
+    fi
 else
 
     source scripts/settings.sh

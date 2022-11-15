@@ -214,9 +214,14 @@ if __name__ == "__main__":
         predictor.start()
     else:
         from afy import predictor_local
-        predictor = predictor_local.PredictorLocal(
+        if opt.use_nvidia:
+            predictor = predictor_local.PredictorLocalNvidia(
             **predictor_args
         )
+        else:
+            predictor = predictor_local.PredictorLocal(
+                **predictor_args
+            )
 
     cam_id = select_camera(config)
 
