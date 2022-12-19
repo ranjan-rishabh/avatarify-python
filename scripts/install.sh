@@ -34,6 +34,6 @@ git clone https://github.com/alievk/first-order-model.git fomm
 
 # Nvidia - get the config and checkpoint from github's readme
 rm -rf One-Shot_Free-View_Neural_Talking_Head_Synthesis 2> /dev/null
-git clone https://github.com/zhanglonghao1992/One-Shot_Free-View_Neural_Talking_Head_Synthesis.git
+git clone https://github.com/ranjan-rishabh/One-Shot_Free-View_Neural_Talking_Head_Synthesis.git
 
 pip install -r requirements.txt

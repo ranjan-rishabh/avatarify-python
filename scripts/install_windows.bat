@@ -17,4 +17,7 @@ REM ###FOMM###
 call rmdir fomm /s /q
 call git clone https://github.com/alievk/first-order-model.git fomm
 
-call pip install -r requirements.txt --use-feature=2020-resolver
+call rmdir One-Shot_Free-View_Neural_Talking_Head_Synthesis
+call git clone https://github.com/ranjan-rishabh/One-Shot_Free-View_Neural_Talking_Head_Synthesis.git
+
+call pip install -r requirements.txt

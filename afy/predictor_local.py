@@ -10,8 +10,7 @@ from sync_batchnorm import DataParallelWithCallback
 print(opt.use_nvidia)
 
 if opt.use_nvidia:
-    from modules.generator import (OcclusionAwareGenerator,
-                               OcclusionAwareSPADEGenerator)
+    from modules.generator import OcclusionAwareGenerator, OcclusionAwareSPADEGenerator
     from modules.keypoint_detector import HEEstimator, KPDetector
 else:
     from modules.generator_optim import OcclusionAwareGenerator

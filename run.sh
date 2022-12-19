@@ -19,8 +19,8 @@ if [[ $USE_NVIDIA == 0 ]]; then
     FOMM_CONFIG=fomm/config/vox-adv-256.yaml
     FOMM_CKPT=vox-adv-cpk.pth.tar
 else
-    FOMM_CONFIG=One-Shot_Free-View_Neural_Talking_Head_Synthesis/config/vox-256-spade.yaml
-    FOMM_CKPT=00000189-checkpoint.pth.tar
+    FOMM_CONFIG=One-Shot_Free-View_Neural_Talking_Head_Synthesis/config/vox-256-spade.yaml #TODO:
+    FOMM_CKPT=00000189-checkpoint.pth.tar #TODO:
 fi
 
 ARGS=""

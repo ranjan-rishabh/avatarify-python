@@ -4,7 +4,9 @@ call scripts/settings_windows.bat
 
 call conda activate %CONDA_ENV_NAME%
 
-set CONFIG=fomm/config/vox-adv-256.yaml
+set CONFIG=One-Shot_Free-View_Neural_Talking_Head_Synthesis/vox-256-spade.yaml
 
-set PYTHONPATH=%PYTHONPATH%;%CD%;%CD%/fomm
-call python afy/cam_fomm.py --config %CONFIG% --relative --adapt_scale --no-pad --checkpoint vox-adv-cpk.pth.tar %*
+set  PYTHONPATH=
+set PYTHONPATH=%CD%;%CD%/One-Shot_Free-View_Neural_Talking_Head_Synthesis
+echo %PYTHONPATH%
+call python afy/cam_fomm.py --config %CONFIG% --relative --adapt_scale --no-pad --checkpoint One-Shot_Free-View_Neural_Talking_Head_Synthesis/00000189-checkpoint.pth.tar --use_nvidia %*

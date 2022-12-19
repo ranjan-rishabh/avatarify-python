@@ -213,12 +213,17 @@ if __name__ == "__main__":
             sys.exit(1)
         predictor.start()
     else:
-        from afy import predictor_local
         if opt.use_nvidia:
+            #os.chdir(os.path.join(os.getcwd(), "One-Shot_Free-View_Neural_Talking_Head_Synthesis"))
+            print("Using Nvidia", os.getcwd())
+            from afy import predictor_local
             predictor = predictor_local.PredictorLocalNvidia(
             **predictor_args
         )
         else:
+            #os.chdir(os.path.join(os.getcwd(), "fomm"))
+            print("Using FOMM", os.getcwd())
+            from afy import predictor_local
             predictor = predictor_local.PredictorLocal(
                 **predictor_args
             )
